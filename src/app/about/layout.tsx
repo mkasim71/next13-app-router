@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 export default function AboutLayout({
   children,
 }: {
@@ -5,8 +7,8 @@ export default function AboutLayout({
 }) {
   return (
     <>
-      <nav className="fixed right-0 top-10 z-10 h-screen w-60 bg-gray-800">
-        <ul className="text-white p-5">
+      <nav className="fixed right-0 z-10 h-screen bg-gray-800 w-80 top-10">
+        <ul className="p-5 text-white">
           <li>Home</li>
           <li>About</li>
           <li>Profile</li>

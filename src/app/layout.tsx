@@ -3,12 +3,13 @@ import "./globals.css";
 import { ReactNode, useState } from "react";
 import { Inter } from "next/font/google";
 import Navbar from "./navbar";
+import { Metadata } from "next";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
-  title: "Next.js 13.4.19 App Router TS",
-  description: "Belajar Next.js App Router + TypeScript + ESLint + Prettier",
+export const metadata: Metadata = {
+  title: "NextJS App Router",
+  description: "Generate by NextJS",
 };
 
 type Props = {
@@ -19,10 +20,11 @@ export default function RootLayout({ children }: Props) {
   const [state, setState] = useState(0);
   return (
     <html lang="en">
+      <title>Belajar Next JS</title>
       <body className={inter.className}>
-        <Navbar></Navbar>
-        <div>Layout {state}</div>
-        <button onClick={() => setState(state + 1)}>Klik</button>
+        <Navbar />
+        {/* <h1>Layout Home {state}</h1>
+        <button onClick={() => setState(state + 1)}>Klik</button> */}
         {children}
       </body>
     </html>
