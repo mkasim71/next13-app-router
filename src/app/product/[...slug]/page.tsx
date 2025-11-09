@@ -1,8 +1,22 @@
-type DetailProductPage = { params: { slug: string } };
+type ProductPageProps = { params: { slug: string } };
 
-export default function DetailProductPage(props: DetailProductPage) {
+async function getData() {
+  const res = await fetch("https://fakestoreapi.com/products");
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+  return res.json();
+}
+
+// fetch("https://fakestoreapi.com/products")
+//   .then((response) => response.json())
+//   .then((data) => console.log(data));
+
+export default async function ProductPage(props: ProductPageProps) {
   const { params } = props;
-  console.log(params);
+  const data = getData();
+  console.log("Data:", data);
   return (
     <>
       <h1>Detai Product Page</h1>
