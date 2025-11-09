@@ -4,6 +4,8 @@ async function getData() {
   // const res = await fetch("https://fakestoreapi.com/products");
   const res = await fetch("http://localhost:3000/api/product", {
     cache: "no-store",
+    tags: ["products"],
+    // next: { revalidate: 30 },
   });
 
   if (!res.ok) {
@@ -21,7 +23,7 @@ export default async function ProductPage(props: ProductPageProps) {
   const products = await getData();
   // console.log(products.data);
   return (
-    <div className="grid grid-cols-3 gap-5 p-5 place-items-center">
+    <div className="grid gap-5 p-5 xl:grid-cols-4 lg:grid-cols-3 place-items-center md:grid-cols-2 ">
       {/* <h1>Product Page</h1> */}
       {products.data.map((product: any) => (
         <div
@@ -44,7 +46,7 @@ export default async function ProductPage(props: ProductPageProps) {
 
             <div className="flex items-center justify-between">
               <span className="mt-3 text-3xl font-bold text-gray-900 dark:text-white">
-                ${product.price}
+                Rp.{product.price}
               </span>
               <a
                 href="#"
