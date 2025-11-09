@@ -1,11 +1,14 @@
 "use client";
 import "./globals.css";
-import { ReactNode, useState } from "react";
+import { ReactNode } from "react";
 import { Inter } from "next/font/google";
 import Navbar from "./navbar";
 import { Metadata } from "next";
+import { usePathname } from "next/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
+
+const disableNavbar = ["/login", "/register"];
 
 export const metadata: Metadata = {
   title: "NextJS App Router",
@@ -17,12 +20,13 @@ type Props = {
 };
 
 export default function RootLayout({ children }: Props) {
-  const [state, setState] = useState(0);
+  const pathname = usePathname();
   return (
     <html lang="en">
       <title>Belajar Next JS</title>
       <body className={inter.className}>
-        <Navbar />
+        {!disableNavbar.includes(pathname) && <Navbar />}
+
         {/* <h1>Layout Home {state}</h1>
         <button onClick={() => setState(state + 1)}>Klik</button> */}
         {children}
