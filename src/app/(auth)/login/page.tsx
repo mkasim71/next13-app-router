@@ -1,6 +1,24 @@
+"use client";
 import Link from "next/link";
 
 export default function LoginPage() {
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const data = {
+      email: formData.get("email"),
+      password: formData.get("password"),
+    };
+    const response = await fetch("/api/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    const result = await response.json();
+    console.log(result);
+  };
+
   return (
     <div>
       <div className="flex flex-col justify-center h-screen px-6 py-12 lg:px-8">
@@ -11,7 +29,7 @@ export default function LoginPage() {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form action="#" method="POST" className="space-y-6">
+          <form className="space-y-6" onSubmit={(e) => handleLogin(e)}>
             <div>
               <label
                 htmlFor="email"
