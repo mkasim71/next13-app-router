@@ -24,7 +24,7 @@ export default function AdminProductPage() {
   };
 
   return (
-    <div className="py-20">
+    <div className="w-3/6 py-2 h-96 rounded-[12px] bg-gray-300 flex flex-col justify-center items-center">
       <h1>{status}</h1>
       <button
         className="p-3 mt-6 bg-slate-800 text-sky-400"

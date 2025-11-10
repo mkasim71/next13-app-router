@@ -10,10 +10,10 @@ const inter = Inter({ subsets: ["latin"] });
 
 const disableNavbar = ["/login", "/register"];
 
-export const metadata: Metadata = {
-  title: "NextJS App Router",
-  description: "Generate by NextJS",
-};
+// export const metadata: Metadata = {
+//   title: "NextJS App Router",
+//   description: "Generate by NextJS",
+// };
 
 type Props = {
   children: ReactNode;
