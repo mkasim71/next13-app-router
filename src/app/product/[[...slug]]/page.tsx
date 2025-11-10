@@ -1,11 +1,12 @@
 type ProductPageProps = { params: { slug: string } };
 
 async function getData() {
-  // const res = await fetch("https://fakestoreapi.com/products");
-  const res = await fetch("http://localhost:3000/api/product", {
+  // const res = await fetch("https://fakestoreapi.com/products", {
+  //   cache: "no-store",
+  // });
+  const res = await fetch("http://localhost:4000/products", {
     cache: "no-store",
     tags: ["products"],
-    // next: { revalidate: 30 },
   });
 
   if (!res.ok) {
@@ -14,18 +15,14 @@ async function getData() {
   return res.json();
 }
 
-// fetch("https://fakestoreapi.com/products")
-//   .then((response) => response.json())
-//   .then((data) => console.log(data));
-
 export default async function ProductPage(props: ProductPageProps) {
   const { params } = props;
   const products = await getData();
-  // console.log(products.data);
+  // console.log(products);
   return (
-    <div className="grid gap-5 p-5 xl:grid-cols-4 lg:grid-cols-3 place-items-center md:grid-cols-2 ">
+    <div className="grid gap-5 px-5 pt-28 xl:grid-cols-4 lg:grid-cols-3 place-items-center md:grid-cols-2">
       {/* <h1>Product Page</h1> */}
-      {products.data.map((product: any) => (
+      {products.map((product) => (
         <div
           key={product.id}
           className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-600 dark:border-gray-700"

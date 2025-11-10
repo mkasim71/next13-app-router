@@ -6,7 +6,7 @@ export default function Navbar() {
   const router = useRouter();
 
   return (
-    <nav className="flex justify-between px-5 py-4 bg-gray-800">
+    <nav className="fixed w-full flex justify-between px-5 py-5 bg-gray-800">
       <div className="flex">
         <h1 className="text-white">Navbar</h1>
         <ul className="flex ml-10 ">
@@ -35,6 +35,26 @@ export default function Navbar() {
               } cursor-pointer hover:bg-gray-600 rounded-md`}
             >
               Profile
+            </li>
+          </Link>
+          <Link href="/product">
+            <li
+              className={`mr-5 ${
+                pathname === "/product" ? "text-blue-300" : "text-white"
+              } cursor-pointer hover:bg-gray-600 rounded-md`}
+            >
+              Product
+            </li>
+          </Link>
+          <Link href="/dashboard/product">
+            <li
+              className={`mr-5 ${
+                pathname === "/dashboard/product"
+                  ? "text-blue-300"
+                  : "text-white"
+              } cursor-pointer hover:bg-gray-600 rounded-md`}
+            >
+              Dashboard
             </li>
           </Link>
         </ul>

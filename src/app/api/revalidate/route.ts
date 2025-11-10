@@ -4,6 +4,7 @@ import { revalidateTag } from "next/cache";
 export async function POST(request: NextRequest) {
   const tag = request.nextUrl.searchParams.get("tag");
   const secret = request.nextUrl.searchParams.get("secret");
+  console.log("TAG", tag);
 
   if (secret !== process.env.REVALIDATE_TOKEN) {
     return NextResponse.json(
