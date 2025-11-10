@@ -5,12 +5,12 @@ type ProductPageProps = { params: { slug: string } };
 
 export default async function ProductPage(props: ProductPageProps) {
   const { params } = props;
-  const products = await getData("http://localhost:4000/products");
-  // console.log(products);
+  const products = await getData("http://localhost:3000/api/product");
+  // console.log(products.data);
   return (
     <div className="grid gap-5 px-5 pt-28 xl:grid-cols-4 lg:grid-cols-3 place-items-center md:grid-cols-2">
       {/* <h1>Product Page</h1> */}
-      {products.map((product) => (
+      {products.data.map((product) => (
         <Link
           href={`/product/detail/${product.id}`}
           key={product.id}
